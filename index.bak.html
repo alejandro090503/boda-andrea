@@ -36,23 +36,6 @@
   --border-light:rgba(158,125,80,.18);
   --soft:linear-gradient(180deg,var(--bg) 0%,var(--surface) 15%,var(--surface) 85%,var(--bg) 100%);
   --gold-grad:linear-gradient(135deg,#6b5021 0%,#a07840 26%,#D4C5B2 50%,#a07840 74%,#6b5021 100%);
-  /* Paleta calida sugerida por el cliente (tonos de la lamina de vestimenta).
-     El dorado sigue mandando; estos entran como acentos en marcos, particulas
-     y textos secundarios. */
-  --champana:#fee4a8;
-  --arena:#D4C5B2;
-  --oro-antiguo:#c9a54e;
-  --camel:#c08248;
-  --cobre:#b87333;
-  --terracota:#c86d4a;
-  --arcilla:#c07a62;
-  --canela:#a9642f;
-  /* Barrido metalico para fondo CLARO: los tonos oscuros mantienen el
-     contraste AA del texto; la version clara del template original se diluia
-     sobre el papel crema. */
-  --gold-sweep:linear-gradient(100deg,
-    #6B4F1C 0%,#7A5C22 10%,#8A6A28 20%,#A8822F 27%,#C9A04E 32%,#A8822F 37%,
-    #9A7830 46%,#6B4F1C 58%,#8A6A28 70%,#B98F3C 80%,#7A5C22 90%,#6B4F1C 100%);
 }
 .gold-metal{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#9e7d50}
 .intro-card{position:relative}
@@ -206,7 +189,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .itin-dot.alt{background:var(--accent);animation:itinAlt 2.8s ease-in-out infinite 1s}
 @keyframes itinGold{0%,100%{box-shadow:0 0 0 4px rgba(158,125,80,.12),0 0 12px rgba(158,125,80,.3);transform:rotate(45deg) scale(1)}50%{box-shadow:0 0 0 10px rgba(158,125,80,.05),0 0 24px rgba(158,125,80,.58);transform:rotate(45deg) scale(1.22)}}
 @keyframes itinAlt{0%,100%{box-shadow:0 0 0 4px rgba(187,161,128,.18),0 0 12px rgba(187,161,128,.35);transform:rotate(45deg) scale(1)}50%{box-shadow:0 0 0 10px rgba(187,161,128,.08),0 0 22px rgba(187,161,128,.58);transform:rotate(45deg) scale(1.22)}}
-.itin-time{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,9vw,40px);font-weight:600;letter-spacing:3px;color:var(--dark);line-height:1.15;margin-bottom:8px}
+.itin-time{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,9vw,40px);font-weight:300;letter-spacing:4px;color:var(--dark);line-height:1;margin-bottom:6px}
 .itin-ev{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,4vw,18px);letter-spacing:.5px;color:var(--dark);opacity:.85}
 
 /* ── DRESS CODE ── */
@@ -384,110 +367,6 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .vinyl-tonearm-pivot{position:absolute;top:0;right:2px;width:7px;height:7px;background:radial-gradient(circle,#D4C5B2,#9e7d50);border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-/* ══════════ BARRIDO DORADO (flush) — receta de bautizo-jayden ══════════
-   background-clip:text sobre un degradado de 300% que se desplaza. Se usa la
-   rampa OSCURA porque el papel es crema: la rampa clara (#FFFBEA) baja el
-   contraste a ~1.1 y el texto desaparece. */
-@keyframes goldSweep{0%{background-position:200% center}100%{background-position:-200% center}}
-.eyebrow,.heading,.heading-sm,.intro-date,.cd-lbl,.fam-role-lbl,.loc-eyebrow,
-.dc-fig-ttl,.dc-avoid-lbl,.dc-sug-lbl,.itin-time,.gift-bank-lbl,.env-title,
-.rsvp-pases-label,.footer-date,.album-lbl,.gal-hint{
-  background-image:var(--gold-sweep);
-  background-size:300% 100%;
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
-  animation:goldSweep 5s linear infinite;
-  /* Pinyon Script y Cormorant italica sobresalen de su caja y el clip las
-     corta; se ensancha la caja y se cancela con margen negativo. */
-  padding-left:.3em;padding-right:.3em;margin-left:-.3em;margin-right:-.3em;
-}
-.heading,.heading-sm{
-  filter:drop-shadow(0 0 5px rgba(201,160,78,.35)) drop-shadow(0 0 16px rgba(201,160,78,.2));
-  animation-duration:6.5s;
-}
-.eyebrow,.cd-lbl,.dc-fig-ttl{animation-duration:7s}
-/* dc-avoid-lbl lleva un <strong> rojo dentro que el clip volveria invisible */
-.dc-avoid-lbl strong{-webkit-text-fill-color:#b4271a;color:#b4271a}
-@media(prefers-reduced-motion:reduce){
-  .eyebrow,.heading,.heading-sm,.intro-date,.cd-lbl,.fam-role-lbl,.dc-fig-ttl,
-  .dc-avoid-lbl,.dc-sug-lbl,.itin-time,.gift-bank-lbl,.env-title,.footer-date{animation:none}
-}
-
-/* ══════════ ACENTOS CALIDOS ══════════ */
-.hero-frame{border-color:rgba(200,109,74,.32)}
-.hero-frame::before{border-color:rgba(254,228,168,.2)}
-.photo-band-frame{border-color:rgba(254,228,168,.5)}
-.orn-diamond{background:var(--cobre)}
-.orn-diamond-sm{background:var(--arcilla)}
-.itin-dot.alt{background:var(--terracota)}
-.gal-quote{color:var(--canela);opacity:.8}
-.dc-fig-sub{color:var(--canela);opacity:.9}
-.rsvp-card::before{border-color:rgba(200,109,74,.26)}
-.loc-row{border-bottom-color:rgba(192,130,72,.28)}
-
-/* ══════════ TONOS SUGERIDOS (dress code) ══════════ */
-.dc-sug-wrap{margin-top:26px;padding-top:24px;border-top:1px solid rgba(158,125,80,.18);max-width:340px;margin-left:auto;margin-right:auto}
-.dc-sug-lbl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12px;letter-spacing:.3em;text-transform:uppercase;text-align:center;display:block;margin-bottom:18px}
-.dc-sug-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
-.dc-sug-sw{display:flex;flex-direction:column;align-items:center;gap:8px;width:66px}
-.dc-sug-circle{width:38px;height:38px;border-radius:50%;box-shadow:0 2px 10px rgba(28,26,23,.16),inset 0 1px 2px rgba(255,255,255,.35);position:relative}
-.dc-sug-circle::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid rgba(158,125,80,.32)}
-.dc-sug-name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:13px;color:var(--text);opacity:.85;text-align:center;line-height:1.4}
-.dc-sug-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:16px;color:var(--text);text-align:center;line-height:1.7;opacity:.85;max-width:310px;margin:0 auto}
-
-/* ══════════ ITINERARIO — linea viva de 4 capas (de boda-jorge-eva) ══════════ */
-.itin-wrap{position:relative;max-width:520px;margin:0 auto;padding:20px clamp(16px,4vw,40px)}
-.itin-track{position:absolute;left:50%;top:0;bottom:0;width:0;overflow:visible;z-index:1;pointer-events:none}
-/* Capa 1: resplandor atmosferico */
-.itin-track-glow{position:absolute;left:-28px;width:56px;top:0;height:100%;transform:scaleY(0);transform-origin:top center;background:linear-gradient(to bottom,transparent 0%,rgba(192,130,72,.17) 8%,rgba(158,125,80,.28) 40%,rgba(200,109,74,.24) 60%,rgba(192,130,72,.15) 92%,transparent 100%);filter:blur(22px);opacity:.92;will-change:transform}
-/* Capa 2: halo medio */
-.itin-track-mid{position:absolute;left:-5px;width:10px;top:0;height:100%;transform:scaleY(0);transform-origin:top center;background:linear-gradient(to bottom,transparent 0%,rgba(212,197,178,.5) 8%,rgba(201,165,78,.72) 40%,rgba(212,197,178,.7) 60%,rgba(201,165,78,.5) 92%,transparent 100%);filter:blur(5px);opacity:.92;will-change:transform}
-/* Capa 3: nucleo cristalino */
-.itin-track-fill{position:absolute;left:-.75px;width:1.5px;top:0;height:100%;transform:scaleY(0);transform-origin:top center;background:linear-gradient(to bottom,transparent 0%,#c9a54e 5%,#f3dfa8 28%,#fff6dd 50%,#f3dfa8 72%,#c08248 95%,transparent 100%);border-radius:1px;will-change:transform}
-/* Capa 4: perla shimmer viajera */
-.itin-track-shimmer{position:absolute;left:-10px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 38% 36%,#fff 0%,#fff2cf 38%,rgba(201,165,78,.1) 100%);box-shadow:0 0 10px 4px rgba(255,240,200,.95),0 0 22px 8px rgba(184,115,51,.5),0 0 42px 14px rgba(158,125,80,.2);opacity:0;pointer-events:none;will-change:top,opacity}
-.itin-events{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(38px,7vh,74px);position:relative;z-index:2}
-.itin-event{position:relative;display:flex;flex-direction:column;align-items:center}
-.itin-marker{width:14px;height:14px;border-radius:50%;background:#efe9dd;border:1.5px solid rgba(158,125,80,.3);position:relative;z-index:3;flex-shrink:0;margin-bottom:20px;opacity:.38;transition:opacity .55s ease,background .55s ease,box-shadow .55s ease,border-color .55s ease}
-.itin-event.is-active .itin-marker{opacity:1;background:radial-gradient(circle at 34% 30%,#fff8e2 0%,#d8b268 52%,#8a6a28 100%);border-color:rgba(184,115,51,.9);box-shadow:0 0 6px 2px rgba(240,215,150,.9),0 0 16px 6px rgba(184,115,51,.45),0 0 32px 10px rgba(200,109,74,.18)}
-.itin-event.is-active .itin-marker::before{content:'';position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(184,115,51,.32);animation:itin-halo 2.4s ease-in-out infinite}
-.itin-event.is-active .itin-marker::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(200,109,74,.12)}
-@keyframes itin-halo{0%,100%{opacity:.28;transform:scale(1)}50%{opacity:.58;transform:scale(1.05)}}
-.itin-card{padding:24px 30px 26px;background:rgba(255,255,255,.72);border:1px solid rgba(158,125,80,.2);border-radius:2px;text-align:center;width:100%;max-width:400px;position:relative;transition:border-color .5s ease,background .5s ease,box-shadow .5s ease}
-.itin-card::before,.itin-card::after{content:'';position:absolute;left:50%;transform:translateX(-50%);height:1px;background:linear-gradient(to right,transparent,rgba(192,130,72,.55),transparent)}
-.itin-card::before{top:10px;width:52%}
-.itin-card::after{bottom:10px;width:52%}
-.itin-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.24em;color:var(--text);padding-left:.24em;line-height:1.5}
-.itin-desc{margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--text);line-height:1.65;opacity:.86}
-.itin-event.is-active .itin-card{border-color:rgba(184,115,51,.48);background:rgba(255,255,255,.92);box-shadow:0 18px 52px -22px rgba(90,60,25,.28)}
-@media(max-width:680px){.itin-wrap{padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px)}.itin-card{max-width:100%;padding:20px 20px 22px}}
-@media(prefers-reduced-motion:reduce){.itin-event.is-active .itin-marker::before{animation:none!important}}
-
-/* ══════════ LLUVIA DE SOBRES (de boda-jeffersson-y-vanessa) ══════════ */
-#regalos{overflow:hidden}
-.env-rain{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.env-rain-item{position:absolute;top:-46px;will-change:transform;opacity:0}
-#regalos .env-stage{position:relative;z-index:1}
-.env-interactive{display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;border:none;background:none;padding:0;margin:26px auto 0;opacity:0}
-.env-body{perspective:700px;position:relative;width:min(258px,74vw);aspect-ratio:260/200;filter:drop-shadow(0 10px 26px rgba(90,60,25,.22))}
-.env-body svg.env-svg{width:100%;height:100%;display:block}
-.env-flap-wrap{position:absolute;top:23%;left:6.9%;width:86.2%;height:43%;transform-origin:top center;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2}
-.env-interactive.open .env-flap-wrap{transform:rotateX(-175deg)}
-.env-seal{position:absolute;top:52%;left:50%;width:23%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:3;transition:opacity .35s ease,transform .5s cubic-bezier(.4,0,.2,1);pointer-events:none}
-.env-interactive.open .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
-.env-open-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s .3s ease,opacity .4s .38s ease;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 16px;text-align:center;pointer-events:none}
-.env-interactive.open .env-open-content{max-height:340px;opacity:1;pointer-events:auto;margin-top:20px}
-.env-mailbox-icon{width:42px;height:42px;color:var(--cobre);margin-top:6px}
-.env-title{font-family:'Pinyon Script',cursive;font-size:clamp(28px,8vw,34px);line-height:1.45;padding:.08em 0}
-.env-desc{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;font-style:italic;color:var(--text);opacity:.88;line-height:1.75;max-width:300px}
-.env-tap-hint{font-family:'Italiana',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--canela);margin-top:18px;opacity:0;transition:opacity .5s ease;position:relative;z-index:1}
-.env-tap-hint.show{opacity:.9;animation:envHintPulse 2.4s ease-in-out infinite}
-.env-interactive.open~.env-tap-hint{opacity:0!important;animation:none;pointer-events:none}
-@keyframes envHintPulse{0%,100%{opacity:.55}50%{opacity:1}}
-.env-body.landed{animation:envBreathe 3.6s ease-in-out infinite}
-@keyframes envBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
-@media(prefers-reduced-motion:reduce){.env-body.landed,.env-tap-hint.show{animation:none!important}}
 </style>
 </head>
 <body>
@@ -550,7 +429,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- BANDA FOTOGRÁFICA 1 -->
   <div class="photo-band rv">
-    <img src="banda.jpg" alt="Andrea y Alan" loading="lazy" style="object-position:center 30%">
+    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197645674-0.jpeg" alt="Andrea y Alan" loading="lazy" style="object-position:center 20%">
     <div class="photo-band-veil"></div>
     <div class="photo-band-frame"></div>
     <span class="photo-band-eyebrow">Nuestra Historia</span>
@@ -664,39 +543,10 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <span class="eyebrow stagger-child">El Programa del Día</span>
     <h2 class="heading-sm stagger-child">Itinerario</h2>
     <div class="orn stagger-child" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <div class="itin-wrap" id="itin">
-      <div class="itin-track" aria-hidden="true">
-        <div class="itin-track-glow" id="itin-glow"></div>
-        <div class="itin-track-mid" id="itin-mid"></div>
-        <div class="itin-track-fill" id="itin-fill"></div>
-        <div class="itin-track-shimmer" id="itin-shimmer"></div>
-      </div>
-      <ul class="itin-events">
-        <li class="itin-event">
-          <span class="itin-marker" aria-hidden="true"></span>
-          <div class="itin-card">
-            <div class="itin-time">5:00 p.m.</div>
-            <div class="itin-name">Ceremonia Religiosa</div>
-            <div class="itin-desc">Parroquia El Señor de la Misericordia<br>Ciudad Juárez, Chihuahua</div>
-          </div>
-        </li>
-        <li class="itin-event">
-          <span class="itin-marker" aria-hidden="true"></span>
-          <div class="itin-card">
-            <div class="itin-time">8:00 p.m.</div>
-            <div class="itin-name">Recepción</div>
-            <div class="itin-desc">Cibeles Eventos Sociales<br>Ciudad Juárez, Chihuahua</div>
-          </div>
-        </li>
-        <li class="itin-event">
-          <span class="itin-marker" aria-hidden="true"></span>
-          <div class="itin-card">
-            <div class="itin-time">Por confirmar</div>
-            <div class="itin-name">Cena, brindis y fiesta</div>
-            <div class="itin-desc">Compartiremos los horarios muy pronto.</div>
-          </div>
-        </li>
-      </ul>
+    <div class="itin-list">
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">5:00 p.m.</div><div class="itin-ev">Ceremonia Religiosa<br>Parroquia El Señor de la Misericordia</div></div>
+      <div class="itin-item rv"><div class="itin-dot alt"></div><div class="itin-time">8:00 p.m.</div><div class="itin-ev">Recepción<br>Cibeles Eventos Sociales</div></div>
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">Por confirmar</div><div class="itin-ev">Cena, brindis y fiesta<br>Compartiremos los horarios muy pronto</div></div>
     </div>
   </section>
 
@@ -717,21 +567,6 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
         <span class="dc-fig-ttl">Damas</span>
         <span class="dc-fig-sub">Vestido formal</span>
       </div>
-    </div>
-
-    <div class="dc-sug-wrap rv">
-      <span class="dc-sug-lbl">Tonos sugeridos</span>
-      <div class="dc-sug-row">
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#fee4a8"></div><span class="dc-sug-name">Champaña</span></div>
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#c9a54e"></div><span class="dc-sug-name">Dorado antiguo</span></div>
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#D4C5B2"></div><span class="dc-sug-name">Beige arena</span></div>
-      </div>
-      <div class="dc-sug-row">
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#c08248"></div><span class="dc-sug-name">Camel</span></div>
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#b87333"></div><span class="dc-sug-name">Cobre</span></div>
-        <div class="dc-sug-sw"><div class="dc-sug-circle" style="background:#c86d4a"></div><span class="dc-sug-name">Terracota</span></div>
-      </div>
-      <p class="dc-sug-msg">Tonos cálidos, dorados y tierra. Elige el que más te guste.</p>
     </div>
 
     <div class="dc-avoid-wrap rv">
@@ -757,14 +592,14 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <p class="gal-quote rv">Cada imagen, un capítulo de nuestra historia de amor.</p>
     <div class="wheel-scene rv" id="wheel-scene">
       <div class="wheel-ring" id="wheel-ring">
-        <div class="wheel-card"><img src="foto1.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto2.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto3.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto4.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto5.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto1.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto2.jpg" alt="Andrea y Alan" loading="lazy"></div>
-        <div class="wheel-card"><img src="foto3.jpg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197616122-4.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197628354-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197639806-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197645674-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197659100-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197616122-4.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197628354-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
+        <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197639806-0.jpeg" alt="Andrea y Alan" loading="lazy"></div>
       </div>
     </div>
     <p class="gal-hint rv">Arrastra para girar</p>
@@ -783,53 +618,35 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- MESA DE REGALOS -->
   <section id="regalos" class="sec rv" style="text-align:center">
-    <div class="env-rain" id="envRain" aria-hidden="true"></div>
-    <div class="env-stage">
-      <span class="eyebrow">Celebra con Nosotros</span>
-      <h2 class="heading-sm">Lluvia de Sobres</h2>
-      <div class="orn" style="margin-top:14px;margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <span class="eyebrow">Mesa de Regalos</span>
+    <h2 class="heading">Un Obsequio</h2>
+    <div class="orn" style="margin-top:14px;margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <div class="gift-icon-wrap rv">
+      <svg viewBox="0 0 72 64" width="68" height="60" fill="none" aria-hidden="true">
+        <path d="M36 16 C32 5 20 1 16 8 C12 14 19 21 31 17 C33.5 16.2 36 16 36 16Z" fill="rgba(158,125,80,.1)" stroke="#9e7d50" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M36 16 C40 5 52 1 56 8 C60 14 53 21 41 17 C38.5 16.2 36 16 36 16Z" fill="rgba(158,125,80,.1)" stroke="#9e7d50" stroke-width="1.4" stroke-linejoin="round"/>
+        <ellipse cx="36" cy="16" rx="4.5" ry="3.5" fill="rgba(158,125,80,.28)" stroke="#9e7d50" stroke-width="1"/>
+        <rect x="6" y="16" width="60" height="13" rx="2" fill="rgba(158,125,80,.08)" stroke="#9e7d50" stroke-width="1.3"/>
+        <rect x="33" y="16" width="6" height="13" fill="rgba(158,125,80,.2)"/>
+        <rect x="10" y="29" width="52" height="34" rx="2" fill="rgba(158,125,80,.05)" stroke="#9e7d50" stroke-width="1.3"/>
+        <line x1="36" y1="29" x2="36" y2="63" stroke="#9e7d50" stroke-width="1.3" opacity=".55"/>
+        <line x1="10" y1="46" x2="62" y2="46" stroke="#9e7d50" stroke-width=".9" opacity=".32"/>
+      </svg>
+    </div>
+    <p class="gift-msg rv">Tu presencia es nuestro regalo más preciado. Si deseas obsequiarnos algo, con cariño hemos elegido la lluvia de sobres.</p>
 
-      <button class="env-interactive" id="envGift" type="button" aria-label="Sobre — toca para abrir" aria-expanded="false">
-        <div class="env-body" id="envGiftBody">
-          <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="envPaper" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%" stop-color="#fdf6e6"/><stop offset="100%" stop-color="#f7ecd6"/>
-              </linearGradient>
-            </defs>
-            <rect x="18" y="52" width="224" height="132" rx="8" fill="url(#envPaper)" stroke="rgba(158,125,80,.55)" stroke-width="1.4"/>
-            <path d="M18 184 L130 110 L242 184" stroke="rgba(192,130,72,.35)" stroke-width="1" fill="none"/>
-          </svg>
-          <div class="env-flap-wrap" aria-hidden="true">
-            <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
-              <defs>
-                <linearGradient id="envFlap" x1="0" y1="1" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#f7ecd6"/><stop offset="100%" stop-color="#fffaef"/>
-                </linearGradient>
-              </defs>
-              <path d="M0 0 L112 86 L224 0 Z" fill="url(#envFlap)" stroke="rgba(158,125,80,.55)" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <svg class="env-seal" viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="28" fill="#a9642f"/>
-            <circle cx="30" cy="30" r="28" fill="none" stroke="#7b4620" stroke-width="2" opacity=".55"/>
-            <circle cx="30" cy="30" r="21.5" fill="none" stroke="#fee4a8" stroke-width="1.1" opacity=".9"/>
-            <text x="30" y="37" text-anchor="middle" font-family="'Pinyon Script', cursive" font-size="24" fill="#fee4a8">A&amp;A</text>
-          </svg>
-        </div>
-        <div class="env-open-content" aria-live="polite">
-          <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="8" y="22" width="36" height="24" rx="5"/>
-            <path d="M8 30 Q26 38 44 30"/>
-            <rect x="18" y="8" width="16" height="16" rx="2"/>
-            <path d="M18 8 Q26 3 34 8"/>
-            <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
-          </svg>
-          <p class="env-title">Tu Presencia es Nuestro Regalo</p>
-          <p class="env-desc">El día del evento habrá una urna donde podrás depositar tu sobre con mucho cariño.</p>
-        </div>
-      </button>
-      <p class="env-tap-hint" id="envGiftHint">Toca para abrir</p>
+    <div class="gift-panel show" id="gift-sobres">
+      <div class="gift-envelope-wrap">
+        <svg class="gift-envelope-svg" viewBox="0 0 90 64" width="88" height="62" fill="none" aria-hidden="true">
+          <rect x="2" y="8" width="86" height="54" rx="4" fill="rgba(158,125,80,.06)" stroke="#9e7d50" stroke-width="1.4"/>
+          <path d="M2 8 L45 38 L88 8" stroke="#9e7d50" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M2 62 L32 36" stroke="#9e7d50" stroke-width="1" opacity=".45"/>
+          <path d="M88 62 L58 36" stroke="#9e7d50" stroke-width="1" opacity=".45"/>
+          <ellipse cx="45" cy="8" rx="10" ry="5" fill="rgba(158,125,80,.14)" stroke="#9e7d50" stroke-width=".8"/>
+          <text x="45" y="11" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="7" fill="#9e7d50" opacity=".8">A &amp; A</text>
+        </svg>
+        <p class="gift-envelope-txt">Tu sobre es el regalo más hermoso que puedes traer. Muchas gracias por tu generosidad y amor.</p>
+      </div>
     </div>
   </section>
 
@@ -862,7 +679,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- BANDA FOTOGRÁFICA 2 -->
   <div class="photo-band rv">
-    <img src="foto3.jpg" alt="Andrea y Alan bailando" loading="lazy" style="object-position:center 40%">
+    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/581b4bca-7a10-44ad-929d-4f5b42fa6db4/1780197639806-0.jpeg" alt="Andrea y Alan bailando" loading="lazy" style="object-position:center 30%">
     <div class="photo-band-veil"></div>
     <div class="photo-band-frame"></div>
     <span class="photo-band-quote">Nos vemos en el altar</span>
@@ -1173,7 +990,7 @@ function initEnvelope(){
 function spawnGoldSpeck(container,seed){
   var d=document.createElement('div');d.className='petal';
   var sz=1.6+Math.random()*2.6;
-  var golds=['rgba(212,197,178,','rgba(158,125,80,','rgba(187,161,128,','rgba(201,165,78,','rgba(200,109,74,','rgba(184,115,51,','rgba(254,228,168,'];
+  var golds=['rgba(212,197,178,','rgba(158,125,80,','rgba(187,161,128,'];
   var c=golds[Math.floor(Math.random()*golds.length)];
   var op=(0.2+Math.random()*0.28).toFixed(2);
   d.style.cssText='left:'+(Math.random()*100)+'%;width:'+sz+'px;height:'+sz+'px;background:'+c+op+');border-radius:50%;position:absolute;top:0;box-shadow:0 0 '+(sz+2)+'px '+c+'0.28)';
@@ -1243,104 +1060,6 @@ function initMain(){
 
   /* Copy */
   window.copyText=function(text){navigator.clipboard.writeText(text).catch(function(){});var t=document.getElementById('copyToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2400);};
-
-  /* ── ITINERARIO — linea viva de 4 capas + perla (de boda-jorge-eva) ── */
-  (function(){
-    var wrap=document.getElementById('itin'),fill=document.getElementById('itin-fill'),
-        glow=document.getElementById('itin-glow'),mid=document.getElementById('itin-mid'),
-        shimmer=document.getElementById('itin-shimmer');
-    if(!wrap||!fill)return;
-    var events=Array.prototype.slice.call(wrap.querySelectorAll('.itin-event'));
-    var nodes=events.map(function(e){return e.querySelector('.itin-marker');});
-    /* No se anima la opacidad de las tarjetas: la seccion ya trae el reveal
-       generico .rv y un segundo fromTo las dejaria en opacity:0 si el trigger
-       no dispara. */
-    var pos=[];
-    function measure(){
-      var r=wrap.getBoundingClientRect(),h=wrap.offsetHeight;
-      pos=nodes.map(function(n){var b=n.getBoundingClientRect();return ((b.top-r.top)+b.height/2)/h;});
-    }
-    measure();
-    window.addEventListener('resize',function(){measure();ScrollTrigger.refresh();});
-    ScrollTrigger.create({
-      trigger:wrap,start:'top 72%',end:'bottom 55%',scrub:.6,
-      onUpdate:function(self){
-        var p=self.progress,t='scaleY('+p.toFixed(4)+')';
-        fill.style.transform=t;
-        if(glow)glow.style.transform=t;
-        if(mid)mid.style.transform=t;
-        if(shimmer){
-          var h=wrap.offsetHeight;
-          shimmer.style.top=(p*h-10)+'px';
-          shimmer.style.opacity=(p>0.015&&p<0.985)?'1':'0';
-        }
-        for(var i=0;i<events.length;i++){
-          events[i].classList.toggle('is-active',p>=(pos[i]||0)-0.02);
-        }
-      }
-    });
-  })();
-
-  /* ── LLUVIA DE SOBRES — cae hasta que la seccion se centra y uno aterriza ── */
-  (function(){
-    var sec=document.getElementById('regalos'),rain=document.getElementById('envRain'),
-        btn=document.getElementById('envGift'),body=document.getElementById('envGiftBody'),
-        hint=document.getElementById('envGiftHint');
-    if(!sec||!rain||!btn)return;
-    var raining=true,landed=false,spawnCall=null,alive=0,MAX_ALIVE=18;
-    function makeEnvelope(){
-      if(alive>=MAX_ALIVE)return;
-      alive++;
-      var el=document.createElementNS('http://www.w3.org/2000/svg','svg');
-      el.setAttribute('viewBox','0 0 34 24');el.setAttribute('class','env-rain-item');
-      var w=16+Math.random()*16;
-      el.style.width=w+'px';el.style.height=(w*24/34)+'px';el.style.left=(Math.random()*100)+'%';
-      var inks=['#9e7d50','#c08248','#c86d4a','#b87333'];
-      var ink=inks[Math.floor(Math.random()*inks.length)];
-      el.innerHTML='<rect x="1" y="1" width="32" height="22" rx="2.5" fill="#fdf6e6" stroke="'+ink+'" stroke-width="1.2"/>'+
-                   '<path d="M1 1 L17 13 L33 1" fill="none" stroke="'+ink+'" stroke-width="1.2" stroke-linejoin="round"/>';
-      rain.appendChild(el);
-      var H=sec.offsetHeight+80,dur=5+Math.random()*4;
-      function kill(){if(el.parentNode){el.remove();alive--;}}
-      gsap.timeline({onComplete:kill})
-        .fromTo(el,{y:-46,x:0,rotation:(Math.random()-.5)*50,opacity:0},
-                   {y:H,x:(Math.random()-.5)*70,rotation:(Math.random()-.5)*160,duration:dur,ease:'none'},0)
-        .fromTo(el,{opacity:0},{opacity:.78,duration:dur*.18,ease:'power1.out'},0)
-        .to(el,{opacity:0,duration:dur*.25,ease:'power1.in'},dur*.75);
-    }
-    /* Spawn por el ticker de GSAP (no setInterval): se pausa con la pestana
-       en segundo plano y no se acumulan sobres. */
-    function scheduleSpawn(){
-      spawnCall=gsap.delayedCall(.52,function(){if(!raining)return;makeEnvelope();scheduleSpawn();});
-    }
-    function stopRain(){
-      raining=false;
-      if(spawnCall)spawnCall.kill();
-      gsap.to(rain,{opacity:0,duration:1.1,ease:'power2.out',onComplete:function(){rain.innerHTML='';alive=0;}});
-    }
-    function land(){
-      if(landed)return;landed=true;stopRain();
-      gsap.fromTo(btn,{opacity:0,y:-150,rotation:-12,scale:.82},
-        {opacity:1,y:0,rotation:0,scale:1,duration:1.15,ease:'back.out(1.5)',
-         onComplete:function(){
-           if(body)body.classList.add('landed');
-           if(hint)hint.classList.add('show');
-         }});
-    }
-    for(var i=0;i<7;i++)gsap.delayedCall(i*.26,makeEnvelope);
-    scheduleSpawn();
-    /* 'center 55%' y no 'center center': el reveal generico corre 28px las
-       secciones aun no visibles y el umbral exacto nunca se alcanza. */
-    ScrollTrigger.create({trigger:sec,start:'center 55%',once:true,onEnter:land,onEnterBack:land});
-    btn.addEventListener('click',function(e){
-      if(e)e.preventDefault();
-      if(!landed)return;
-      var open=btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-      if(open&&body)body.classList.remove('landed');
-      ScrollTrigger.refresh();
-    });
-  })();
 
   /* Galería rueda 3D */
   (function(){
