@@ -1332,6 +1332,10 @@ function initMain(){
     /* 'center 55%' y no 'center center': el reveal generico corre 28px las
        secciones aun no visibles y el umbral exacto nunca se alcanza. */
     ScrollTrigger.create({trigger:sec,start:'center 55%',once:true,onEnter:land,onEnterBack:land});
+    /* Salvavidas: si el trigger no dispara (alturas raras, reduced-motion,
+       ScrollTrigger sin refrescar) el sobre se quedaria en opacity:0 y la
+       seccion aparecería vacía. A los 9s aterriza de todos modos. */
+    gsap.delayedCall(9,land);
     btn.addEventListener('click',function(e){
       if(e)e.preventDefault();
       if(!landed)return;
